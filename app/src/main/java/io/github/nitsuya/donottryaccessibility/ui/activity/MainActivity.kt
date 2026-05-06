@@ -44,7 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             if (button.isPressed) hideOrShowLauncherIcon(isChecked)
         }
 
-        binding.titleGithubIcon.setOnClickListener { openBrowser(url = "https://github.com/Nitsuya/DoNotTryAccessibility") }
+
     }
 
     private fun refreshModuleStatus() {

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DoNotTryAccessibility</string>
     <string name="xposed_desc">Hook系统框架阻止应用读取无障碍</string>
-    <string name="about_module">This module is made by YukiHookAPI. \nLearn more https://github.com/HighCapable/YuKiHookAPI</string>
+    <string name="about_module">This module is made by YukiHookAPI.</string>
     <string name="system_version">System version: %1$s</string>
     <string name="module_version">Module version: %1$s</string>
     <string name="module_not_activated">Module not activated</string>
