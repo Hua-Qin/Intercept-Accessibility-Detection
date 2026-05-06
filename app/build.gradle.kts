@@ -1,20 +1,20 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
-    id("com.highcapable.flexilocale")
+    autowire(libs.plugins.android.application)
+    autowire(libs.plugins.kotlin.android)
+    autowire(libs.plugins.kotlin.ksp)
+    autowire(libs.plugins.flexi.locale)
 }
 
 android {
-    namespace = "io.nitsuya.donottryaccessibility"
-    compileSdk = 34
+    namespace = property.project.app.packageName
+    compileSdk = property.project.android.compileSdk
 
     defaultConfig {
-        applicationId = "io.nitsuya.donottryaccessibility"
-        minSdk = 27
-        targetSdk = 34
-        versionName = "1.0.3"
-        versionCode = 3
+        applicationId = property.project.app.packageName
+        minSdk = property.project.android.minSdk
+        targetSdk = property.project.android.targetSdk
+        versionName = property.project.app.versionName
+        versionCode = property.project.app.versionCode
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
@@ -59,17 +59,17 @@ android {
 }
 
 dependencies {
-    compileOnly("de.robv.android.xposed:api:82")
-    implementation("com.highcapable.yukihookapi:api:1.2.1")
-    ksp("com.highcapable.yukihookapi:ksp-xposed:1.2.1")
-    implementation("com.github.duanhong169:drawabletoolbox:1.0.7")
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    compileOnly(de.robv.android.xposed.api)
+    implementation(com.highcapable.yukihookapi.api)
+    ksp(com.highcapable.yukihookapi.ksp.xposed)
+    implementation(com.github.duanhong169.drawabletoolbox)
+    implementation(androidx.core.core.ktx)
+    implementation(androidx.appcompat.appcompat)
+    implementation(com.google.android.material.material)
+    implementation(androidx.constraintlayout.constraintlayout)
+    implementation(org.jetbrains.kotlinx.kotlinx.coroutines.jdk8)
+    implementation(org.jetbrains.kotlinx.kotlinx.coroutines.android)
+    testImplementation(junit.junit)
+    androidTestImplementation(androidx.test.ext.junit)
+    androidTestImplementation(androidx.test.espresso.espresso.core)
 }
