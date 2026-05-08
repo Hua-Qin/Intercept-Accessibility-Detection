@@ -25,9 +25,15 @@ jobs:
     - name: Decode keystore
       run: |
         echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > key.jks
-    
+
     - name: Build with Gradle
-      run: ./gradlew assembleRelease
+      run: |
+        if [ -f "key.jks" ] && [ -n "$KEY_ANDROID" ]; then
+          ./gradlew assembleRelease --no-daemon
+        else
+          echo "Warning: Keystore not available, building debug APK"
+          ./gradlew assembleDebug --no-daemon
+        fi
       env:
         KEY_ANDROID: ${{ secrets.KEY_ANDROID }}
     
