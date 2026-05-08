@@ -31,7 +31,12 @@ jobs:
         if [ -f "key.jks" ] && [ -n "$KEY_ANDROID" ]; then
           ./gradlew assembleRelease --no-daemon
         else
-          echo "Warning: Keystore not available, building debug APK"
+          echo "============================================"
+          echo "WARNING: Keystore not configured properly!"
+          echo "KEY_ANDROID is: ${KEY_ANDROID:-NOT SET}"
+          echo "key.jks exists: $(test -f key.jks && echo YES || echo NO)"
+          echo "============================================"
+          echo "Falling back to debug build without signing..."
           ./gradlew assembleDebug --no-daemon
         fi
       env:
